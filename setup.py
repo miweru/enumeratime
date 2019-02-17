@@ -3,9 +3,9 @@ from setuptools import setup
 
 setup(
     name="enumeratime",
-    version="0.0.1",
-    #packages=[""], #die enthaltenden Packages
-    scripts=["enumeratime"],
+    version="0.0.2",
+    packages=["enumeratime"], #die enthaltenden Packages
+    #scripts=["enumeratime"],
     license="GNU GENERAL PUBLIC LICENSE V3 OR LATER (GPLV3+)",
     author="Michael Ruppert",
     author_email="michael.ruppert@fau.de",
