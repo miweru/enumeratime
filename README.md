@@ -1,6 +1,6 @@
 enumeratime
 ===============================
-Einfaches, nicht perfektes Skript, um sich in Schleifen eine Prozent und Zeitprognose auszugeben.
+Einfaches Programm, um sich in Schleifen eine Prozent und Zeitprognose auszugeben.
 Gibt pro Schleifendurchlauf die Zeilennummer zurück, kann also auch enumerate ersetzen.
 
 Der Leser kennt vermutlich das Gefühl, wenn man etwas bei Python verarbeitet und es *dauert, und dauert," und dauert,"\*100*
@@ -12,6 +12,5 @@ from enumeratime import  EnumeraTIME
 for n, line in EnumeraTime(myobject)):
     doSomething(myobject)
 ```
-
 Hinweis:
 Die Software ist unter GPL3.0 lizensiert, allerdings in nur 15 Minuten entstanden, um abschätzen zu können, ob die Verarbeitung innerhalb der nächsten Stunde fertig wird.
