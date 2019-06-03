@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="enumeratime",
-    version="0.0.2",
+    version="0.0.3",
     packages=["enumeratime"], #die enthaltenden Packages
     #scripts=["enumeratime"],
     license="GNU GENERAL PUBLIC LICENSE V3 OR LATER (GPLV3+)",

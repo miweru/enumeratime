@@ -5,6 +5,7 @@ Very simple implementation of a time prognosis objekt for iterables.
 
 """
 class EnumeraTIME:
+    PLEN = 60
     def __init__(self, iterator):
         self.iterator=iterator
         try:
@@ -30,11 +31,13 @@ class EnumeraTIME:
         if self.n%self.t==self.t-1:
             percent=self.n/self.l
             tmt=time.time()-self.t1
-            print("="*5)
-            print("Percent: {:.1%}".format(percent))
-            print("ETA: %f s"%(tmt*(1/(self.n/self.l))-tmt))
-        if self.n%(self.t*10)==(self.t*10)-1:
-            print(time.ctime(self.t1+tmt*(1/(self.n/self.l))))
+            #print("="*5)
+            print(" Percent: {:.1%}".format(percent), end=" ")
+            print("ETA: %f s"%(tmt*(1/(self.n/self.l))-tmt), end=" ")
+            print(time.ctime(self.t1+tmt*(1/(self.n/self.l))),end=" ")
+            print("="*int(percent*self.PLEN) + "_"*(self.PLEN-int(percent*self.PLEN)),end="\r")
+        #if self.n%(self.t*10)==(self.t*10)-1:
+            #print(time.ctime(self.t1+tmt*(1/(self.n/self.l))))
         return (self.n, no)
     
     def __len__(self):
