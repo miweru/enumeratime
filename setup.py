@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="enumeratime",
-    version="0.0.3",
+    version="0.0.4",
     packages=["enumeratime"], #die enthaltenden Packages
     #scripts=["enumeratime"],
     license="GNU GENERAL PUBLIC LICENSE V3 OR LATER (GPLV3+)",
@@ -11,6 +11,7 @@ setup(
     author_email="michael.ruppert@fau.de",
     description="Einfache Prozent und Zeitangabe beim Schleifendurchlauf",
     long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
     #install_requires=[,],
     python_requires=">=3.5",
     url="https://github.com/miweru/enumeratime",
