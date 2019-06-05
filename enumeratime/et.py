@@ -13,7 +13,10 @@ class EnumeraTIME:
             self.l=len(iterator)
         except:
             raise Exception("Your Object has no length, EnumeraTIME needs one")
-        if self.l>1000:
+
+        if self.l>10000:
+            self.t = self.l // 10000
+        elif self.l>1000:
             self.t=self.l//1000 #Timer
         elif self.l>100:
             self.t=self.l//100
@@ -40,7 +43,7 @@ class EnumeraTIME:
         if self.n%self.t==self.t-1:
             percent=self.n/self.l
             tstamp = time.time()
-            if self.laststamp+1>tstamp:
+            if (self.laststamp+1)<tstamp:
                 #This corrects the terminal width one time a second
                 try:
                     twidth, tlen = get_terminal_size()
@@ -48,7 +51,7 @@ class EnumeraTIME:
                 except:
                     pass
                 self.laststamp = tstamp
-            if self.kstamp+1>tstamp:
+            if (self.kstamp+0.1)<tstamp:
                 self.kstamp=tstamp
                 tmt=tstamp-self.t1
                 now=time.localtime(self.t1+tmt*(1/(self.n/self.l)))
