@@ -14,7 +14,9 @@ class EnumeraTIME:
         except:
             raise Exception("Your Object has no length, EnumeraTIME needs one")
 
-        if self.l>10000:
+        if self.l>100000:
+            self.t = self.l // 100000
+        elif self.l>10000:
             self.t = self.l // 10000
         elif self.l>1000:
             self.t=self.l//1000 #Timer
@@ -51,7 +53,7 @@ class EnumeraTIME:
                 except:
                     pass
                 self.laststamp = tstamp
-            if (self.kstamp+0.1)<tstamp:
+            if (self.kstamp+0.05)<tstamp:
                 self.kstamp=tstamp
                 tmt=tstamp-self.t1
                 now=time.localtime(self.t1+tmt*(1/(self.n/self.l)))
