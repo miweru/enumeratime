@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 import time
+from shutil import get_terminal_size
 """
 Very simple implementation of a time prognosis objekt for iterables.
 
 """
 class EnumeraTIME:
-    PLEN = 60
+    REDU = 46
     def __init__(self, iterator):
         self.iterator=iterator
         try:
@@ -20,6 +21,13 @@ class EnumeraTIME:
             self.t=self.l//10
         else:
             self.t=1
+        self.PLEN = 60
+        try:
+            twidth, tlen = get_terminal_size()
+            self.PLEN = twidth - self.REDU
+        except:
+            pass
+        self.laststamp = time.time()
     def __iter__(self):
         self.t1=time.time()
         self.n=0
@@ -30,14 +38,23 @@ class EnumeraTIME:
         no=self.i.__next__()
         if self.n%self.t==self.t-1:
             percent=self.n/self.l
-            tmt=time.time()-self.t1
+            tstamp = time.time()
+            if self.laststamp+1>tstamp:
+                #This corrects the terminal width one time a sekond
+                try:
+                    twidth, tlen = get_terminal_size()
+                    self.PLEN = twidth - self.REDU
+                except:
+                    pass
+                self.laststamp = tstamp
+            tmt=tstamp-self.t1
+            now=time.localtime(self.t1+tmt*(1/(self.n/self.l)))
+            now = time.strftime("%H:%M \033[0m%d.%m.%Y",now)
             #print("="*5)
-            print(" Percent: {:.1%}".format(percent), end=" ")
-            print("ETA: %f s"%(tmt*(1/(self.n/self.l))-tmt), end=" ")
-            print(time.ctime(self.t1+tmt*(1/(self.n/self.l))),end=" ")
-            print("="*int(percent*self.PLEN) + "_"*(self.PLEN-int(percent*self.PLEN)),end="\r")
-        #if self.n%(self.t*10)==(self.t*10)-1:
-            #print(time.ctime(self.t1+tmt*(1/(self.n/self.l))))
+            print(" Percent: \033[34m{:.1%}\033[0m".format(percent), end=" ")
+            print("ETA: %5.2fs\033[0m"%(tmt*(1/(self.n/self.l))-tmt), end=" ",sep="")
+            print("\033[32m",now,"\033[0m",end="",sep="")
+            print("\033[33m","="*int(percent*self.PLEN) +"\033[36m" + "_"*(self.PLEN-int(percent*self.PLEN)),"\033[0m ",end="\r",sep="")
         return (self.n, no)
     
     def __len__(self):
