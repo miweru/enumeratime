@@ -3,7 +3,6 @@ from setuptools import setup
 
 setup(
     name="enumeratime",
-    long_description_content_type="text/markdown",
     version="0.0.5",
     packages=["enumeratime"], #die enthaltenden Packages
     #scripts=["enumeratime"],
@@ -11,7 +10,8 @@ setup(
     author="Michael Ruppert",
     author_email="michael.ruppert@fau.de",
     description="Einfache Prozent und Zeitangabe beim Schleifendurchlauf",
-    long_description=open("README.md").read(),
+    long_description=open("README.rst", encoding="utf-8").read(),
+    #long_description_content_type="text/markdown",
     #install_requires=[,],
     python_requires=">=3.5",
     url="https://github.com/miweru/enumeratime",
