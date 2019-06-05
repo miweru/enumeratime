@@ -6,7 +6,7 @@ Very simple implementation of a time prognosis objekt for iterables.
 
 """
 class EnumeraTIME:
-    REDU = 46
+    REDU = 37
     def __init__(self, iterator):
         self.iterator=iterator
         try:
@@ -40,7 +40,7 @@ class EnumeraTIME:
             percent=self.n/self.l
             tstamp = time.time()
             if self.laststamp+1>tstamp:
-                #This corrects the terminal width one time a sekond
+                #This corrects the terminal width one time a second
                 try:
                     twidth, tlen = get_terminal_size()
                     self.PLEN = twidth - self.REDU
@@ -51,8 +51,8 @@ class EnumeraTIME:
             now=time.localtime(self.t1+tmt*(1/(self.n/self.l)))
             now = time.strftime("%H:%M \033[0m%d.%m.%Y",now)
             #print("="*5)
-            print(" Percent: \033[34m{:.1%}\033[0m".format(percent), end=" ")
-            print("ETA: %5.2fs\033[0m"%(tmt*(1/(self.n/self.l))-tmt), end=" ",sep="")
+            print(" \033[34m{:.1%}\033[0m".format(percent), end=" ")
+            print("ETA: %5.1fs\033[0m"%(tmt*(1/(self.n/self.l))-tmt), end=" ",sep="")
             print("\033[32m",now,"\033[0m",end="",sep="")
             print("\033[33m","="*int(percent*self.PLEN) +"\033[36m" + "_"*(self.PLEN-int(percent*self.PLEN)),"\033[0m ",end="\r",sep="")
         return (self.n, no)
