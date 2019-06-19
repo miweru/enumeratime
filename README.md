@@ -14,3 +14,5 @@ for n, line in EnumeraTime(myobject)):
 ```
 Hinweis:
 Die Software ist unter GPL3.0 lizensiert, allerdings in nur 15 Minuten entstanden, um abschätzen zu können, ob die Verarbeitung innerhalb der nächsten Stunde fertig wird.
+
+Ich kannte leider tqdm noch nicht, als ich die Software schrieb, das ist allerdings sicherlich besser als meine Variante.
